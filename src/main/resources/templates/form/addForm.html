@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form action="item.html" th:action th:object="${item}" method="post">
+    <div>
+      <label for="itemNm">상품명</label>
+      <input type="text" id="itemNm" th:field="*{itemNm}" class="form-control" placeholder="이름을 입력하세요.">
+    </div>
+    <div>
+        <label for="price">가격</label>
+        <input type="text" id="price" th:field="*{price}" class="form-control" placeholder="가격을 입력하세요.">
+    </div>
+
+  </form>
+</body>
+</html>

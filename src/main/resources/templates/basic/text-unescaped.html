@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>text vs utext</h1>
+    <ul>
+        <li>th:text = <span th:text="${data}"></span></li>
+        <li>th:utext = <span th:utext="${data}"></span></li>
+    </ul>
+    <ul>
+        <!-- 괄호 그대로표시하려면 th:inline="none" 설정 -->
+        <li> <span th:inline="none">[[...]]</span> [[${data}]] </li>
+        <li> <span th:inline="none">[(...)]</span> [(${data})] </li>
+    </ul>
+</body>
+</html>

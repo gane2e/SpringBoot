@@ -22,6 +22,14 @@ public class SecurityConfig { //시큐리티 설정
         // http.csrf().disable(); -> 람다식 변환필요(버전상향으로인해)
         // csrf 공격방지
         http
+                .authorizeHttpRequests(config ->
+                        config
+                                .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                                .requestMatchers("/", "/members/**", "/item/**", "/images/**").permitAll() //해당 경로의 요청은 누구나 허용한다.
+                                .requestMatchers("/admin/**").hasRole("ADMIN") //해당 경로의 요청은 ADMIN 만 가능
+                                .anyRequest().authenticated() //이외
+                );
+        http
                 .formLogin(config ->
                         config.loginPage("/members/login") //커스텀 로그인
                             .defaultSuccessUrl("/") //로그인 성공시

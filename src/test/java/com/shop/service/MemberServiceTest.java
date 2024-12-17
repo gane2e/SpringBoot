@@ -37,7 +37,7 @@ class MemberServiceTest {
 
     @Test
     @DisplayName("회원가입 테스트")
-    public void saveMeberTest(){
+    public void saveMemberTest(){
 
         Member member = createMember();
         Member savedMember = memberService.saveMember(member);

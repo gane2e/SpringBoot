@@ -37,7 +37,7 @@ class CartRepositoryTest {
     public Member createMember() {
         MemberFormDto memberFormDto =
                 MemberFormDto.builder()
-                        .email("NewTest3@test.com")
+                        .email("NewTest5@test.com")
                         .name("홍길동")
                         .address("서울시 마포구 합정동")
                         .password("1234")
@@ -57,12 +57,16 @@ class CartRepositoryTest {
 
         cartRepository.save(cart);
 
-        em.flush(); //2차캐시저장
+        em.flush(); //2차캐시저장(DB에반영 / 롤백가능)
         em.clear(); //캐시클리어
 
         Cart savedCart = cartRepository.findById(cart.getId())
                 .orElseThrow(EntityNotFoundException::new);
+
         log.info("savedCart : " + savedCart);
+
+
+        /* 두값이 같은지 비교 */
         assertEquals(savedCart.getMember().getId(), member.getId());
     }
 

@@ -8,4 +8,5 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     //Member 반환타입으로 email기준 찾겠음 (아이디 중복체크)
     Member findByEmail(String email);
 
+    void removeById(Long id);
 }

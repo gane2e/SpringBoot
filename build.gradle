@@ -61,6 +61,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.security/spring-security-test
     testImplementation 'org.springframework.security:spring-security-test:6.4.1'
 
+    /* 서로 다른 클래스의 값을 필드의 이름과 자료형이 같으면 getter,setter를 통해 값을 복사해서 객체를 반환해준다.*/
+    // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+    implementation 'org.modelmapper:modelmapper:3.2.1'
+
 
 
 }

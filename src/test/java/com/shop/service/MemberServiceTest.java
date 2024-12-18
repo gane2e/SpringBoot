@@ -50,4 +50,6 @@ class MemberServiceTest {
         assertEquals(savedMember.getRole(), member.getRole());
     }
 
+
+
 }

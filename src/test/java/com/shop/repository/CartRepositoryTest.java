@@ -70,4 +70,12 @@ class CartRepositoryTest {
         assertEquals(savedCart.getMember().getId(), member.getId());
     }
 
+    @Test
+    @DisplayName("CASCADE REMOVE 테스트")
+    @Commit //test실패
+    public void removeCartTest(){
+        memberRepository.removeById(252L);
+    }
+
+
 }

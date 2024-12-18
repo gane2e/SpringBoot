@@ -33,6 +33,7 @@ public class Member  extends BaseEntity{
     private Role role; //권한
 
     //MemberFormDto -> Member로 변환(Dto로 받은 객체 매핑)
+    /* 엔티티에 직접 영향이 끼치지않게 Dto를통해 접근함 */
     public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
         Member member = new Member();
         member.setName(memberFormDto.getName());

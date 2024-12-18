@@ -19,7 +19,7 @@ public class Cart extends BaseEntity {
 
     /*@OneToOne(fetch = FetchType.EAGER) *//*기본값(EAGER) -*/
     /*@OneToOne(fetch = FetchType.LAZY) 지연로딩 - 필요시점에 쿼리실행 */
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,   cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name="member_id")
     private Member member;
 

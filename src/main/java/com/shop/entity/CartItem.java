@@ -21,11 +21,11 @@ public class CartItem extends BaseEntity {
     @Column(name = "cart_item_id")
     private Long id;
     
-    @ManyToOne(fetch = FetchType.LAZY) /* cart 테이블 조인 */
+    @ManyToOne(fetch = FetchType.LAZY ,  cascade = {CascadeType.PERSIST, CascadeType.REMOVE}) /* cart 테이블 조인 */
     @JoinColumn(name = "cart_id")
     private Cart cart;
     
-    @ManyToOne(fetch = FetchType.LAZY) /* 상품 테이블 조인 */
+    @ManyToOne(fetch = FetchType.LAZY ,  cascade = {CascadeType.PERSIST, CascadeType.REMOVE}) /* 상품 테이블 조인 */
     @JoinColumn(name = "item_id")
     private Item item;
     

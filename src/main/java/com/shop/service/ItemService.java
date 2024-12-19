@@ -3,6 +3,7 @@ package com.shop.service;
 import com.shop.dto.ItemFormDto;
 import com.shop.dto.ItemImgDto;
 import com.shop.dto.ItemSearchDto;
+import com.shop.dto.MainItemDto;
 import com.shop.entity.Item;
 import com.shop.entity.ItemImg;
 import com.shop.repository.ItemImgRepository;
@@ -61,7 +62,7 @@ public class ItemService {
     }
 
     /* 아이템 상세페이지 정보 읽기 START  */
-    /*@Transactional(readOnly = true)*/
+    @Transactional(readOnly = true)
     public ItemFormDto getItemDtl(Long itemId) {
         List<ItemImg> itemImgList
                 = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
@@ -110,6 +111,14 @@ public class ItemService {
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
     /* 검색처리 END */
+
+
+    /* 메인페이지에 보여줄 상품 데이터를 조회 */
+    @Transactional(readOnly = true)
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        return itemRepository.getMainItemPage(itemSearchDto, pageable);
+    }
+    /*  */
 
 
 }

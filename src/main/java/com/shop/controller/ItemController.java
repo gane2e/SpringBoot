@@ -121,12 +121,14 @@ public class ItemController {
         Pageable pageable =
                 PageRequest.of(page.isPresent() ? page.get() : 0, 10);
 
+        log.info("pageable ==> " + pageable);
+
         Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
 
         model.addAttribute("items", items);
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
-        return "/item/itemMng";
+        return "item/itemMng";
     }
 
 

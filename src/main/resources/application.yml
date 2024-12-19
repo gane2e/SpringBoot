@@ -11,6 +11,7 @@ spring:
     username: root
     password: 1234
 
+
   jpa:
     hibernate:
       ddl-auto: update #테이블 생성 / 수정
@@ -27,6 +28,8 @@ spring:
     multipart:
       max-file-size: 20MB #파일 한개당 최대 사이즈
       max-request-size: 100MB #요청당 최대 파일 사이즈
+  thymeleaf:
+    cache: false
 itemImgLocation: c:/shop/item #상품 이미지 업로드 경로
 uploadPath: file:///C:/shop/ #리소스 업로드 경로
 

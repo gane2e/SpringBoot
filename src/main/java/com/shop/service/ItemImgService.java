@@ -53,13 +53,15 @@ public class ItemImgService {
             imgUrl = "/images/item/" + imgName;
             /* [imgUrl] => /images/item/aa9148d3-e8c2-41a4-9e01-553a88daf5e9.png */
 
-            /* 엔티티 =>  이미지 정보 업데이트 메서드 호출 */
-            /* itemImgLocation(파일 저장할 경로) => c:/shop/item */
-            /* oriImgName(원본 파일명) => Thumvivil.png */
-            /* itemImgFile.getBytes(업로드할 파일) => 69957 */
-            itemImg.updateItemImg(oriImgName, imgName, imgUrl);
-            itemImgRepository.save(itemImg);
+            /* 이 줄에서 save하면 첨부개수만큼만 저장됩니다. */
         }
+
+        /* 엔티티 =>  이미지 정보 업데이트 메서드 호출 */
+        /* itemImgLocation(파일 저장할 경로) => c:/shop/item */
+        /* oriImgName(원본 파일명) => Thumvivil.png */
+        /* itemImgFile.getBytes(업로드할 파일) => 69957 */
+        itemImg.updateItemImg(oriImgName, imgName, imgUrl);
+        itemImgRepository.save(itemImg);
 
     }
     /* 이미지 저장 로직 실행 END  */
@@ -81,8 +83,8 @@ public class ItemImgService {
             /* 새로 등록한 이미지로 변경 */
             String oriImgName = itemImgFile.getOriginalFilename();
             String imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
-            String imfUrl = "/images/item/" + imgName;
-            savedItemImg.updateItemImg(oriImgName, imgName, imfUrl);
+            String imgUrl = "/images/item/" + imgName;
+            savedItemImg.updateItemImg(oriImgName, imgName, imgUrl);
             /* savedItemImg = 영속상태, 데이터를 변경하는 것만으로 변경 감지 기능이 동작 
                트랜잭션이 끝날 때 update쿼리가 실행됨. 여기서 중요한 것은
                엔티티가 영속 상태여야 함

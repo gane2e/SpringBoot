@@ -9,7 +9,6 @@ import java.io.FileOutputStream;
 import java.util.UUID;
 
 @Service
-@Log
 @Log4j2
 public class FileService {
 

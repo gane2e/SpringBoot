@@ -20,7 +20,7 @@ public class Order extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY) /* 한 명의 회원은 여러번 주문할 수 있다. */
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL) /* 한 명의 회원은 여러번 주문할 수 있다. */
     @JoinColumn(name = "member_id")
     private Member member;
 

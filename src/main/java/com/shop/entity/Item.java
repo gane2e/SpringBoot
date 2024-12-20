@@ -3,6 +3,7 @@ package com.shop.entity;
 import com.shop.constant.ItemSellStatus;
 import com.shop.dto.ItemFormDto;
 import com.shop.dto.ItemImgDto;
+import com.shop.exception.OutOfStockException;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -57,6 +58,17 @@ public class Item extends BaseEntity {
     public static void updateItem(ItemFormDto itemFormDto) {
         modelMapper.map(itemFormDto, Item.class);
     }*/
+
+
+    // 상품주문시 재고 감소
+    public void removeStock(int stockNumber) {
+
+        int restStock = this.stockNumber - stockNumber;
+        if(restStock < 0) {
+            throw new OutOfStockException("상품의 재고가 부족 합니다. (현재 재고 수량 : " + this.stockNumber + ")");
+        }
+        this.stockNumber = restStock;
+    }
 
 
 }

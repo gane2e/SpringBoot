@@ -131,6 +131,15 @@ public class ItemController {
         return "item/itemMng";
     }
 
+    @GetMapping(value = "/item/{itemId}")
+    public String itemDetail(@PathVariable("itemId") Long itemId, Model model) {
+
+        /* 아이템 상세정보 얻어오기 */
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        model.addAttribute("item", itemFormDto);
+        return "item/itemDtl";
+    }
+
 
 
 }

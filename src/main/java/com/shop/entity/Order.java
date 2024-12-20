@@ -36,4 +36,34 @@ public class Order extends BaseEntity {
                     orphanRemoval = true) //모두적용
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    /* 주문상품 객체를 이용해 주문객체 생성 */
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+        /* order <-> orderItem 양방향관계이므로 orderItem객체에도 Order를주입 */
+    }
+
+
+    public static Order createOrder(Member member, List<OrderItem> orderItemList){
+        Order order = new Order();
+        order.setMember(member);
+
+        for(OrderItem orderItem : orderItemList) {
+            order.addOrderItem(orderItem);
+        }
+
+        order.setOrderStatus(OrderStatus.ORDER);
+        order.setOrderDate(LocalDateTime.now());
+
+        return order;
+    }
+
+    public int getTotalPrice(){
+        int totalPrice = 0;
+        for (OrderItem orderItem : orderItems) {
+            totalPrice += orderItem.getTotalPrice();
+        }
+        return totalPrice;
+    }
+
 }

@@ -29,4 +29,21 @@ public class OrderItem extends BaseEntity {
 
     private int count; //수량
 
+
+    /* 주문이 생기먄 item에 재고 감소하고 주문내역 추가함 */
+    public static OrderItem createOrderItem(Item item, int count){
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setCount(count);
+        orderItem.setOrderPrice(item.getPrice());
+
+        item.removeStock(count);
+        return orderItem;
+    }
+
+    /* 총 주문금액 = 주문수량 * 금액 */
+    public int getTotalPrice(){
+        return orderPrice * count;
+    }
+
 }
